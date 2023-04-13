@@ -34,8 +34,6 @@ class BarcodeScanner extends React.Component {
         };
     }
     async componentDidMount() {
-        if (DBR.BarcodeReader._bUseFullFeature !== this.props.fullFeature)
-            DBR.BarcodeReader._bUseFullFeature = this.props.fullFeature;
         //Load the library on page load to speed things up.
         try {
             this.scanner = this.scanner || await DBR.BarcodeScanner.createInstance();
@@ -82,8 +80,7 @@ class BarcodeScanner extends React.Component {
         let scanner = this.scanner = this.scanner || await DBR.BarcodeScanner.createInstance();
         let _runtimeSettings = await scanner.getRuntimeSettings();
         let runtimeSettings_str = "";
-        if (this.props.fullFeature)
-            runtimeSettings_str = await scanner.outputSettingsToString();
+        runtimeSettings_str = await scanner.outputSettingsToString();
         this.setState({
             RTSUpdatedCount: this.state.RTSUpdatedCount + 1,
             runtimeSettings: _runtimeSettings,
@@ -121,8 +118,8 @@ class BarcodeScanner extends React.Component {
         try {
             return (await scanner.getModeArgument(_arg[0], parseInt(_arg[1]), _arg[2]));
         } catch (e) {
-            return 'error';
             console.log(e);
+            return 'error';
         }
     }
     appendMessage = str => {
@@ -142,7 +139,6 @@ class BarcodeScanner extends React.Component {
                 {this.state.bShowScanner ? (
                     <ScannerUI
                         scanner={this.scanner}
-                        fullFeature={this.props.fullFeature}
                         runtimeSettings={this.state.runtimeSettings}
                         runtimeSettingsString={this.state.runtimeSettingsString}
                         RTSUpdatedCount={this.state.RTSUpdatedCount}
@@ -172,7 +168,6 @@ class BarcodeScanner extends React.Component {
             case 'Runtime Settings':
                 return (
                     <StaticSettings
-                        fullFeature={this.props.fullFeature}
                         modalTitle={this.state.modalTitle}
                         runtimeSettings={this.state.runtimeSettings}
                         runtimeSettingsString={this.state.runtimeSettingsString}
@@ -185,7 +180,6 @@ class BarcodeScanner extends React.Component {
                 return (
                     <SetUpUI
                         RTSUpdatedCount={this.state.RTSUpdatedCount}
-                        fullFeature={this.props.fullFeature}
                         modalTitle={this.state.modalTitle}
                         runtimeSettings={this.state.runtimeSettings}
                         updateRuntimeSettings={this.updateRuntimeSettings}

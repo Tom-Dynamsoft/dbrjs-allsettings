@@ -32,8 +32,6 @@ class BarcodeReader extends React.Component {
         };
     }
     async componentDidMount() {
-        if (DBR.BarcodeReader._bUseFullFeature !== this.props.fullFeature)
-            DBR.BarcodeReader._bUseFullFeature = this.props.fullFeature;
         //Load the library on page load to speed things up.
         try {
             await DBR.BarcodeReader.loadWasm();
@@ -88,7 +86,6 @@ class BarcodeReader extends React.Component {
             case 'Runtime Settings':
                 return (
                     <StaticSettings
-                        fullFeature={this.props.fullFeature}
                         modalTitle={this.state.modalTitle}
                         runtimeSettings={this.state.runtimeSettings}
                         runtimeSettingsString={this.state.runtimeSettingsString}
@@ -101,7 +98,6 @@ class BarcodeReader extends React.Component {
                 return (
                     <SetUpUI
                         RTSUpdatedCount={this.state.RTSUpdatedCount}
-                        fullFeature={this.props.fullFeature}
                         modalTitle={this.state.modalTitle}
                         runtimeSettings={this.state.runtimeSettings}
                         updateRuntimeSettings={this.updateRuntimeSettings}
@@ -348,7 +344,6 @@ class BarcodeReader extends React.Component {
             let reader = this.reader = this.reader || await DBR.BarcodeReader.createInstance();
             let _runtimeSettings = await reader.getRuntimeSettings();
             let runtimeSettings_str = "";
-            if (this.props.fullFeature)
                 runtimeSettings_str = await reader.outputSettingsToString();
             this.setState({
                 RTSUpdatedCount: this.state.RTSUpdatedCount + 1,

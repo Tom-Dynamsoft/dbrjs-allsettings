@@ -470,7 +470,7 @@ class SetUpUI extends React.Component {
                                         <label>Region</label>
                                         <label style={{ width: '100%', textAlign: 'center' }}>
                                             <input type="checkbox" id="ipt-runtimesettings-regionMeasuredByPercentage_1" defaultChecked={!!this.props.runtimeSettings.region.regionMeasuredByPercentage} onClick={this.usePercentageOrNot} />By Percentage
-                                            </label>
+                                        </label>
                                         <input type="kPercentage" id="ipt-runtimesettings-regionTop_1" className="ipt-runtimesettings-regionTop" placeholder={!!this.props.runtimeSettings.region.regionMeasuredByPercentage ? "top(%)" : "top"} defaultValue={this.props.runtimeSettings.region.regionTop === 0 ? "" : this.props.runtimeSettings.region.regionTop} />
                                         <input type="kPercentage" id="ipt-runtimesettings-regionLeft_1" className="ipt-runtimesettings-regionLeft" placeholder={!!this.props.runtimeSettings.region.regionMeasuredByPercentage ? "left(%)" : "left"} defaultValue={this.props.runtimeSettings.region.regionLeft === 0 ? "" : this.props.runtimeSettings.region.regionLeft} />
                                         <input type="kPercentage" id="ipt-runtimesettings-regionRight_1" className="ipt-runtimesettings-regionRight" placeholder={!!this.props.runtimeSettings.region.regionMeasuredByPercentage ? "right(%)" : "right"} defaultValue={this.props.runtimeSettings.region.regionRight === 0 ? "" : this.props.runtimeSettings.region.regionRight} />
@@ -481,7 +481,7 @@ class SetUpUI extends React.Component {
                             </Card>
                             <Card style={{ padding: '1vw', marginTop: '1vw' }} >
                                 <Card.Title style={{ width: '100%' }}>More Settings</Card.Title>
-                                {this.props.fullFeature ? (<>
+                                <>
                                     <label htmlFor="ipt-runtimesettings-barcodeFormatIds_2">Extra Barcode Format</label>
                                     <input id="ipt-runtimesettings-barcodeFormatIds_2" onChange={this.updateBarcodeFormatsCheckStatus2} type="knumber" defaultValue={this.props.runtimeSettings.barcodeFormatIds_2} />
                                     <Card className="paddingOneVW allWidth">
@@ -499,7 +499,7 @@ class SetUpUI extends React.Component {
                                             <label><input type="checkbox" onClick={this.barcodeFormatsUpdate2} defaultValue="0x800000" className="ipt-barcodeFormat2" defaultChecked={(this.props.runtimeSettings.barcodeFormatIds_2 & 0x800000) === 0x800000} />Australian Post</label>
                                             <label><input type="checkbox" onClick={this.barcodeFormatsUpdate2} defaultValue="0x1000000" className="ipt-barcodeFormat2" defaultChecked={(this.props.runtimeSettings.barcodeFormatIds_2 & 0x1000000) === 0x1000000} />UK Royal Mail</label>
                                         </Card>
-                                    </Card></>) : ""}
+                                    </Card></>
 
                                 <label htmlFor="ipt-runtimesettings-returnBarcodeZoneClarity">ReturnBarcodeZoneClarity</label>
                                 <input type="range" data-type="setting" onChange={this.updateRangeValue} min="0" max="1" step="1" defaultValue={this.props.runtimeSettings.returnBarcodeZoneClarity} factor="1" />

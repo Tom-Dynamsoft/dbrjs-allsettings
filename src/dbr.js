@@ -9,7 +9,7 @@ import DBR from "dynamsoft-javascript-barcode";
 /* When using your own license, please uncomment the following lines and fill in your own information. */
 /* For more information, please refer to https://www.dynamsoft.com/license-tracking/docs/about/licensefaq.html?ver=latest#how-to-use-a-trackable-license. */
 
- DBR.BarcodeReader.organizationID = "234810";
+ //DBR.BarcodeReader.organizationID = "234810";
 // DBR.BarcodeReader.handshakeCode = "A-SPECIFIC-HANDSHAKECODE";
 // DBR.BarcodeReader.sessionPassword = "PASSWORD-TO-PROTECT-YOUR-LICENSE"; // Important field to protect your license.
 // DBR.BarcodeReader.licenseServer = ["YOUR-OWN-MAIN-LTS", "YOUR-OWN-STANDBY-LTS"]; // Ignore this line if you are using Dynamsoft-hosting LTS
@@ -20,7 +20,7 @@ import DBR from "dynamsoft-javascript-barcode";
 
 /** LICENSE ALERT - THE END */
 
-DBR.BarcodeReader.engineResourcePath = "https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@8.6.1/dist/";
+DBR.BarcodeReader.engineResourcePath = "https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@8.8.3/dist/";
 
 // DBR.BarcodeReader._bUseFullFeature = true; // Control of loading min wasm or full wasm.
 
